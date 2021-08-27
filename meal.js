@@ -26,20 +26,26 @@ const setMealLoad = (foods) => {
   const spinnerDiv = document.getElementById("spinner-field");
   console.log(spinnerDiv);
   if (foodSection.childElementCount == 0) {
-    spinnerDiv.classList.remove("d-none");
-    spinnerDiv.classList.add("d-block");
+    // spinnerDiv.classList.remove("d-none");
+    // spinnerDiv.classList.add("d-block");
   }
   if (!foods) {
     errorsDiv.classList.remove("d-none");
     errorsDiv.classList.add("d-block");
-    spinnerDiv.classList.add("d-none");
+    // errors
+    // spinnerDiv.classList.remove("d-block");
+    // spinnerDiv.classList.add("d-none");
   } else {
+    // errors
+    errorsDiv.classList.remove("d-block");
     errorsDiv.classList.add("d-none");
-    spinnerDiv.classList.add("d-none");
-
+    // spinner
+    // spinnerDiv.classList.remove("d-block");
+    // spinnerDiv.classList.add("d-none");
+    // food-item
     foods.forEach((food) => {
       const div = document.createElement("div");
-      div.classList.add("col-4");
+      div.classList.add("col-md-4", "col-sm-6", "col-12");
       const { strMeal, strMealThumb, strInstructions, idMeal } = food;
       div.innerHTML = `<div class="card m-3">
                     <img class='img-fluid' src="${strMealThumb}" class="card-img-top" alt="...">
@@ -72,7 +78,7 @@ const setSingleFoodDetails = (singleFood) => {
   const { strMeal, strMealThumb, strInstructions, strYoutube } = singleFood;
   const div = document.createElement("div");
   div.classList.add("col-12");
-  div.innerHTML = `<div class="card m-3 w-100">
+  div.innerHTML = `<div class="card m-2">
                     <img class='img-fluid' src="${strMealThumb}" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">${strMeal}</h5>
