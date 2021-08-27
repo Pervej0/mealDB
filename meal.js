@@ -1,9 +1,12 @@
 const foodSection = document.getElementById("foods-section");
+
+// user input value getting-
 const userInput = () => {
   let inputField = document.getElementById("user-input");
   return inputField.value;
 };
 
+// API call and user value setting-
 const mealLoad = async () => {
   let userValue = userInput();
   if (userValue == "") {
@@ -17,9 +20,15 @@ const mealLoad = async () => {
   }
 };
 
+// using API called data and showing on UI-
 const setMealLoad = (foods) => {
   const errorsDiv = document.getElementById("errors");
-  console.log(errorsDiv);
+  const spinnerDiv = document.getElementById("spinner-field");
+  console.log(spinnerDiv);
+  if (foodSection.childElementCount == 0) {
+    spinnerDiv.classList.remove("d-none");
+    spinnerDiv.classList.add("d-block");
+  }
   if (!foods) {
     errorsDiv.classList.remove("d-none");
     errorsDiv.classList.add("d-block");
@@ -45,6 +54,7 @@ const setMealLoad = (foods) => {
   }
 };
 
+// Caliing API to show single food details after click on read-more button-
 const singleFoodDetails = async (id) => {
   let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   let res = await fetch(url);
@@ -52,6 +62,7 @@ const singleFoodDetails = async (id) => {
   setSingleFoodDetails(data.meals[0]);
 };
 
+// setting API DATA to show single food details after click on read-more button-
 const setSingleFoodDetails = (singleFood) => {
   foodSection.textContent = "";
   console.log(singleFood);
