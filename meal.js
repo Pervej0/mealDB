@@ -32,8 +32,11 @@ const setMealLoad = (foods) => {
   if (!foods) {
     errorsDiv.classList.remove("d-none");
     errorsDiv.classList.add("d-block");
+    spinnerDiv.classList.add("d-none");
   } else {
     errorsDiv.classList.add("d-none");
+    spinnerDiv.classList.add("d-none");
+
     foods.forEach((food) => {
       const div = document.createElement("div");
       div.classList.add("col-4");
